@@ -1,0 +1,89 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="/style.css">  
+    <title>Wood Shop</title>  
+</head>
+<body>
+    <header>  
+        <h1>Wood Shop</h1>  
+        <nav>  
+            <ul>  
+                <li><a href="#home">Главная</a></li>  
+                <li><a href="#products">Продукты</a></li>  
+                <li><a href="#about">О нас</a></li>  
+                <li><a href="#contact">Контакты</a></li>  
+            </ul>  
+        </nav>  
+    </header>  
+
+    <main>  
+
+        <title>Регистрация и вход</title>
+    </head>
+    <body>
+      <h2>Регистрация</h2>
+        <form id="register-form">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" name="username">
+            <br>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password">
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <br>
+            <button type="submit">Зарегистрироваться</button>
+            <br>
+            <button type="submit">Войти</button>
+        </form>
+        </form>
+        
+        <section id="products">  
+            <h2>Наши продукты</h2>  
+            <div class="product-card">  
+                <img src="/1.webp" alt="Подставка">
+                <h3>Подставка для фильтров</h3>  
+                <p>Представляем вам надежный держатель для фильтра, идеально подходящий для использования с кофеварками. Этот аксессуар станет незаменимым помощником в вашем процессе приготовления кофе, обеспечивая максимальное удобство и качество. С его помощью вы сможете легко и быстро устанавливать фильтры, что значительно упростит процесс заваривания вашего любимого напитка.</p>  
+                <p>Цена: 1000 руб.</p>  
+                <button>Добавить в корзину</button>  
+            </div>  
+            <!-- Можно добавить больше карточек продуктов -->  
+        </section>  
+    </main>  
+
+    <footer>  
+        <p>&copy; 2024 Интернет-магазин. Все права защищены.</p>  
+    </footer>  
+
+    <script src="../app.js"></script>
+    <script>
+        const form = document.querySelector('form');
+      
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+      
+          const username = document.querySelector('#username').value;
+          const password = document.querySelector('#password').value;
+          const email = document.querySelector('#email').value;
+      
+          const data = { username, password, email };
+      
+          const response = await fetch('/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          });
+      
+          const result = await response.json();
+      
+          console.log(result);
+        });
+      </script>
+    
+</body>  
+</html>  
